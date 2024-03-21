@@ -1,19 +1,19 @@
 def stock_picker(prices)
-  i = 0
-  j = 0
+  buy = 0
+  sell = 0
   days = []
   profit = 0
   
-    while i < prices.length
-      while j < prices.length
-        if profit < (prices[j]-prices[i])
-          profit = [profit, (prices[j]-prices[i])].max
-          days = [i,j]
+    while buy < prices.length
+      while sell < prices.length
+        if profit < (prices[sell]-prices[buy]) # If the new profit is greater
+          profit = [profit, (prices[sell]-prices[buy])].max
+          days = [buy,sell] # Record the days
         end
-        j+=1
+        sell +=1
       end
-      i += 1
-      j = i
+      buy += 1
+      sell = buy
     end
   return days
 end
